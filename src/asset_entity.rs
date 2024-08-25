@@ -3,7 +3,7 @@ use serde::*;
 
 #[my_no_sql_entity("assets")]
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct AssetEntity {
+pub struct AssetMyNoSqlEntity {
     #[serde(rename = "Accuracy")]
     pub accuracy: usize,
     #[serde(rename = "IsEnabled")]
@@ -18,10 +18,8 @@ pub struct AssetEntity {
     pub icon_url: String,
 }
 
-impl AssetEntity {
-    pub fn generate_partition_key() -> &'static str {
-        "a"
-    }
+impl AssetMyNoSqlEntity {
+    pub const PARTITION_KEY: &'static str = "a";
 
     pub fn get_asset_id(&self) -> &str {
         &self.row_key
