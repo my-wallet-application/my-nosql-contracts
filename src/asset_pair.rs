@@ -5,9 +5,9 @@ use serde::*;
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct AssetPairMyNoSqlEntity {
     #[serde(rename = "Direct")]
-    pub direct: ConvertData,
+    pub direct: Option<ConvertData>,
     #[serde(rename = "Reverse")]
-    pub reverse: ConvertData,
+    pub reverse: Option<ConvertData>,
     #[serde(rename = "PriceAccuracy")]
     pub price_accuracy: usize,
     #[serde(rename = "IsEnabled")]
