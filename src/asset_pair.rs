@@ -10,10 +10,6 @@ pub struct AssetPairMyNoSqlEntity {
     pub to_asset: String,
     #[serde(rename = "PriceAccuracy")]
     pub price_accuracy: usize,
-    #[serde(rename = "EnabledDirectConversion")]
-    pub enabled_direct_conversion: bool,
-    #[serde(rename = "EnabledReverseConversion")]
-    pub enabled_reverse_conversion: bool,
 }
 
 impl AssetPairMyNoSqlEntity {
