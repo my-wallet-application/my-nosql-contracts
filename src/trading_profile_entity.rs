@@ -5,7 +5,7 @@ use serde::*;
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct TradingProfileMyNoSqlEntity {
     #[serde(rename = "Name")]
-    pub name: usize,
+    pub name: String,
 
     #[serde(rename = "Assets")]
     pub assets: Option<Vec<String>>,
