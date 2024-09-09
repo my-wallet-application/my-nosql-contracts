@@ -4,11 +4,11 @@ use serde::{Deserialize, Serialize};
 
 #[my_no_sql_entity("ticker-id-mapping")]
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct TickerIdMapping {
+pub struct TickerIdMappingMyNoSqlEntity {
     pub ids: Vec<String>,
 }
 
-impl TickerIdMapping {
+impl TickerIdMappingMyNoSqlEntity {
     pub fn generate_partition_key(src_id: &str) -> &str {
         src_id
     }
