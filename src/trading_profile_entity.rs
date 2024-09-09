@@ -11,7 +11,9 @@ pub struct TradingProfileMyNoSqlEntity {
     pub assets: Option<Vec<String>>,
 
     pub asset_pairs: Option<Vec<AssetPairProfileSettings>>,
-    pub commission: Option<f64>,
+
+    #[serde(rename = "ExchangeCommission")]
+    pub exchange_commission: Option<f64>,
     pub default: bool,
 }
 
