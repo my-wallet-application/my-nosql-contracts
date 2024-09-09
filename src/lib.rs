@@ -6,3 +6,5 @@ mod asset_pair;
 pub use asset_pair::*;
 mod trading_profile_entity;
 pub use trading_profile_entity::*;
+mod ticker_id_mapping;
+pub use ticker_id_mapping::*;
