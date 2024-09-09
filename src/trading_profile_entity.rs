@@ -11,7 +11,7 @@ pub struct TradingProfileMyNoSqlEntity {
     pub assets: Option<Vec<String>>,
 
     pub asset_pairs: Option<Vec<AssetPairProfileSettings>>,
-
+    pub commission: Option<f64>,
     pub default: bool,
 }
 
@@ -28,7 +28,4 @@ pub struct AssetPairProfileSettings {
     pub id: String,
     pub direct: bool,
     pub reverse: bool,
-    // 1 = 100%
-    pub direct_commission: Option<f64>,
-    pub reverse_commission: Option<f64>,
 }
