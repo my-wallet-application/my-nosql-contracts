@@ -4,28 +4,22 @@ use serde::*;
 #[my_no_sql_entity("asset-pairs")]
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct AssetPairMyNoSqlEntity {
-    #[serde(rename = "Direct")]
-    pub direct: Option<ConvertData>,
-    #[serde(rename = "Reverse")]
-    pub reverse: Option<ConvertData>,
-    #[serde(rename = "PriceAccuracy")]
-    pub price_accuracy: usize,
-    #[serde(rename = "IsEnabled")]
-    pub is_enabled: bool,
-}
-
-impl AssetPairMyNoSqlEntity {
-    pub const PARTITION_KEY: &'static str = "c";
-
-    pub fn get_id(&self) -> &str {
-        &self.row_key
-    }
-}
-
-#[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct ConvertData {
     #[serde(rename = "FromAsset")]
     pub from_asset: String,
     #[serde(rename = "ToAsset")]
     pub to_asset: String,
+    #[serde(rename = "PriceAccuracy")]
+    pub price_accuracy: usize,
+    #[serde(rename = "EnabledDirectConversion")]
+    pub enabled_direct_conversion: bool,
+    #[serde(rename = "EnabledReverseConversion")]
+    pub enabled_reverse_conversion: bool,
+}
+
+impl AssetPairMyNoSqlEntity {
+    pub const PARTITION_KEY: &'static str = "ap";
+
+    pub fn get_id(&self) -> &str {
+        &self.row_key
+    }
 }
