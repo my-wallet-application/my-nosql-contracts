@@ -4,6 +4,8 @@ use serde::*;
 #[my_no_sql_entity("asset-pairs")]
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct AssetPairMyNoSqlEntity {
+    #[serde(rename = "Name")]
+    pub name: String,
     #[serde(rename = "FromAsset")]
     pub from_asset: String,
     #[serde(rename = "ToAsset")]
