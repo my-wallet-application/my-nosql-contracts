@@ -10,6 +10,8 @@ pub struct AssetPairMyNoSqlEntity {
     pub to_asset: String,
     #[serde(rename = "PriceAccuracy")]
     pub price_accuracy: usize,
+    #[serde(rename = "IsEnabled")]
+    pub is_enabled: bool,
 }
 
 impl AssetPairMyNoSqlEntity {
