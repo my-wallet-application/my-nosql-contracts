@@ -10,3 +10,5 @@ mod ticker_id_mapping;
 pub use ticker_id_mapping::*;
 mod price_bridges_settings;
 pub use price_bridges_settings::*;
+mod bid_ask_snapshot;
+pub use bid_ask_snapshot::*;
