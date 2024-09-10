@@ -6,7 +6,7 @@ pub struct PriceBridgesSettingsMyNoSqlEntity {
     pub host_port: String,
 }
 
-impl PriceBridgesSettings {
+impl PriceBridgesSettingsMyNoSqlEntity {
     pub fn generate_partition_key() -> &'static str {
         "pb"
     }
