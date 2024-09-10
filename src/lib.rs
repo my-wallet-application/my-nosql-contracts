@@ -8,3 +8,5 @@ mod trading_profile_entity;
 pub use trading_profile_entity::*;
 mod ticker_id_mapping;
 pub use ticker_id_mapping::*;
+mod price_bridges_settings;
+pub use price_bridges_settings::*;
