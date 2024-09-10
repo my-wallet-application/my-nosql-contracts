@@ -2,7 +2,7 @@ use serde::*;
 
 service_sdk::macros::use_my_no_sql_entity!();
 #[derive(Serialize, Deserialize, Clone)]
-pub struct PriceBridgesSettings {
+pub struct PriceBridgesSettingsMyNoSqlEntity {
     pub host_port: String,
 }
 
