@@ -2,7 +2,7 @@ use serde::*;
 
 service_sdk::macros::use_my_no_sql_entity!();
 
-#[my_no_sql_entity("bid-ask-snapshots")]
+#[my_no_sql_entity("bid-ask-snapshot")]
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct BidAskSnapshotNoSqlEntity {
     pub moment: i64,
