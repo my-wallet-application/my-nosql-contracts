@@ -5,7 +5,7 @@ service_sdk::macros::use_my_no_sql_entity!();
 #[my_no_sql_entity("bid-ask-snapshots")]
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct BidAskSnapshotNoSqlEntity {
-    pub timestamp: i64,
+    pub moment: i64,
     pub bid: f64,
     pub ask: f64,
 }
