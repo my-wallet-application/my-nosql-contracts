@@ -12,3 +12,5 @@ mod price_bridges_settings;
 pub use price_bridges_settings::*;
 mod bid_ask_snapshot;
 pub use bid_ask_snapshot::*;
+mod mini_graph_entity;
+pub use mini_graph_entity::*;
