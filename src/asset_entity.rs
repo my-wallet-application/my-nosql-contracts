@@ -16,11 +16,8 @@ pub struct AssetMyNoSqlEntity {
     pub name: String,
     #[serde(rename = "IconUrl")]
     pub icon_url: String,
-
     #[serde(rename = "IsUsd")]
     pub is_usd: Option<bool>,
-    #[serde(rename = "IsBtc")]
-    pub is_btc: Option<bool>,
 }
 
 impl AssetMyNoSqlEntity {
