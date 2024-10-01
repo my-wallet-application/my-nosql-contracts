@@ -1,3 +1,5 @@
+use std::collections::BTreeMap;
+
 use serde::*;
 
 service_sdk::macros::use_my_no_sql_entity!();
@@ -6,6 +8,7 @@ service_sdk::macros::use_my_no_sql_entity!();
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct MiniGraphNoSqlEntity {
     pub data: Vec<f64>,
+    pub candles: BTreeMap<i32, [f64; 4]>, //hour_key, open, high, low, close
 }
 
 impl MiniGraphNoSqlEntity {
@@ -25,6 +28,26 @@ impl MiniGraphNoSqlEntity {
         self.data.push(value);
         if self.data.len() > 240 {
             self.data.remove(0);
+        }
+    }
+
+    pub fn update_candle(&mut self, hour_key: i32, price: f64) {
+        if let Some(value) = self.candles.get_mut(&hour_key) {
+            if price > value[1] {
+                value[1] = price;
+            }
+
+            if price < value[2] {
+                value[2] = price;
+            }
+
+            value[3] = price;
+        } else {
+            self.candles.insert(hour_key, [price, price, price, price]);
+        }
+
+        if self.candles.len() > 240 {
+            self.candles.pop_first();
         }
     }
 }
