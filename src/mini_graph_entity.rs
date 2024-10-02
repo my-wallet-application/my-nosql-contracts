@@ -46,7 +46,7 @@ impl MiniGraphNoSqlEntity {
             self.candles.insert(hour_key, [price, price, price, price]);
         }
 
-        if self.candles.len() > 240 {
+        if self.candles.len() > 80 {
             self.candles.pop_first();
         }
     }
