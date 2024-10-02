@@ -8,7 +8,7 @@ service_sdk::macros::use_my_no_sql_entity!();
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct MiniGraphNoSqlEntity {
     pub data: Vec<f64>,
-    pub candles: BTreeMap<i32, [f64; 4]>, //hour_key, open, high, low, close
+    pub candles: BTreeMap<u32, [f64; 4]>, //hour_key, open, high, low, close
 }
 
 impl MiniGraphNoSqlEntity {
@@ -31,7 +31,7 @@ impl MiniGraphNoSqlEntity {
         }
     }
 
-    pub fn update_candle(&mut self, hour_key: i32, price: f64) {
+    pub fn update_candle(&mut self, hour_key: u32, price: f64) {
         if let Some(value) = self.candles.get_mut(&hour_key) {
             if price > value[1] {
                 value[1] = price;
