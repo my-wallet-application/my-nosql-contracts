@@ -23,7 +23,7 @@ impl TradingConditionsProfile {
         &self.partition_key
     }
 
-    pub fn get_asset_id(&self) -> &str {
+    pub fn get_asset_pair_id(&self) -> &str {
         &self.row_key
     }
 }
