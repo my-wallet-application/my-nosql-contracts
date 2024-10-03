@@ -14,6 +14,7 @@ pub struct AssetPairMyNoSqlEntity {
     pub price_accuracy: usize,
     #[serde(rename = "IsEnabled")]
     pub is_enabled: bool,
+    pub accuracy: Option<usize>,
 }
 
 impl AssetPairMyNoSqlEntity {
