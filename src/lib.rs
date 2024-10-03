@@ -14,5 +14,4 @@ mod mini_graph_entity;
 pub use mini_graph_entity::*;
 mod trading_profile_entity;
 pub use trading_profile_entity::*;
-mod trading_groups;
-pub use trading_groups::*;
+pub mod trading_groups;
