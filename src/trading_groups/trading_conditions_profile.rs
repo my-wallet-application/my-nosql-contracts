@@ -4,8 +4,6 @@ use serde::*;
 #[my_no_sql_entity("trading-conditions")]
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct TradingConditionsProfile {
-    #[serde(rename = "AssetPairId")]
-    pub asset_pair_id: String,
     #[serde(rename = "DirectExchange")]
     pub direct_exchange: bool,
     #[serde(rename = "ReverseExchange")]
@@ -21,9 +19,11 @@ pub struct TradingConditionsProfile {
 }
 
 impl TradingConditionsProfile {
-    pub const PARTITION_KEY: &'static str = "tcp";
+    pub fn get_trading_group_id(&self) -> &str {
+        &self.partition_key
+    }
 
-    pub fn get_id(&self) -> &str {
+    pub fn get_asset_id(&self) -> &str {
         &self.row_key
     }
 }
