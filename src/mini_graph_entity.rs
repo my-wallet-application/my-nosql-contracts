@@ -1,7 +1,7 @@
 use std::collections::BTreeMap;
 
 use serde::*;
-use service_sdk::rust_extensions::date_time::DateTimeAsMicroseconds;
+use service_sdk::rust_extensions::date_time::*;
 
 service_sdk::macros::use_my_no_sql_entity!();
 
@@ -26,8 +26,9 @@ impl MiniGraphNoSqlEntity {
     }
 
     pub fn new(instrument_id: String, timestamp: DateTimeAsMicroseconds, price: f64) -> Self {
+        let hour_key: HourKey = timestamp.into();
         let mut candles = BTreeMap::new();
-        candles.insert(to_key_hour(timestamp), [price, price, price, price]);
+        candles.insert(hour_key.to_u32(), [price, price, price, price]);
 
         Self {
             partition_key: MiniGraphNoSqlEntity::generate_partition_key().to_string(),
@@ -69,13 +70,4 @@ impl MiniGraphNoSqlEntity {
             candles.pop_first();
         }
     }
-}
-
-pub fn to_key_hour(dt: DateTimeAsMicroseconds) -> u32 {
-    let date_time_struct: rust_extensions::date_time::DateTimeStruct = dt.into();
-
-    (date_time_struct.year as u32) * 1000000
-        + date_time_struct.month * 10000
-        + date_time_struct.day * 100
-        + date_time_struct.time.hour
 }
