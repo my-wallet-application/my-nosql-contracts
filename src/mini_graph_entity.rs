@@ -8,7 +8,7 @@ service_sdk::macros::use_my_no_sql_entity!();
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct MiniGraphNoSqlEntity {
     pub data: Vec<f64>,
-    pub candles: Option<BTreeMap<u32, Vec<f64>>>, //hour_key, open, high, low, close
+    pub candles: Option<BTreeMap<u32, [f64; 4]>>, //hour_key, open, high, low, close
 }
 
 impl MiniGraphNoSqlEntity {
@@ -48,7 +48,7 @@ impl MiniGraphNoSqlEntity {
 
             value[3] = price;
         } else {
-            candles.insert(hour_key, vec![price, price, price, price]);
+            candles.insert(hour_key, [price, price, price, price]);
         }
 
         if candles.len() > 72 {
