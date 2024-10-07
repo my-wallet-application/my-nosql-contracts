@@ -26,9 +26,9 @@ impl MiniGraphNoSqlEntity {
     }
 
     pub fn new(instrument_id: String, timestamp: DateTimeAsMicroseconds, price: f64) -> Self {
-        let hour_key: HourKey = timestamp.into();
+        let hour_key: IntervalKey<HourKey> = timestamp.into();
         let mut candles = BTreeMap::new();
-        candles.insert(hour_key.to_u32(), [price, price, price, price]);
+        candles.insert(hour_key.to_i64() as u32, [price, price, price, price]);
 
         Self {
             partition_key: MiniGraphNoSqlEntity::generate_partition_key().to_string(),
