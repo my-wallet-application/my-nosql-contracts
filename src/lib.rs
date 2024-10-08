@@ -12,6 +12,4 @@ mod bid_ask_snapshot;
 pub use bid_ask_snapshot::*;
 mod mini_graph_entity;
 pub use mini_graph_entity::*;
-mod trading_profile_entity;
-pub use trading_profile_entity::*;
 pub mod trading_groups;
