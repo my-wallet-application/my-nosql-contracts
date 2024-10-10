@@ -7,3 +7,8 @@ service_sdk::macros::use_my_no_sql_entity!();
 pub struct GlobalSettingsMyNoSqlEntity {
     pub commissions_account_id: String,
 }
+
+impl GlobalSettingsMyNoSqlEntity {
+    pub const PARTITION_KEY: &'static str = "gs";
+    pub const ROW_KEY: &'static str = "gs";
+}
