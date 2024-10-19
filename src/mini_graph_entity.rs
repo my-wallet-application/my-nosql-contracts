@@ -8,7 +8,7 @@ service_sdk::macros::use_my_no_sql_entity!();
 #[my_no_sql_entity("mini-graph")]
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct MiniGraphNoSqlEntity {
-    pub data: Vec<f64>,
+    //pub data: Vec<f64>,
     pub candles: Option<BTreeMap<i64, [f64; 4]>>, //hour_key, open, high, low, close
 }
 
@@ -34,18 +34,19 @@ impl MiniGraphNoSqlEntity {
             partition_key: MiniGraphNoSqlEntity::generate_partition_key().to_string(),
             row_key: instrument_id,
             time_stamp: String::new(),
-            data: vec![price],
+            //data: vec![price],
             candles: Some(candles),
         }
     }
 
-    pub fn insert_value(&mut self, value: f64) {
-        self.data.push(value);
-        if self.data.len() > 240 {
-            self.data.remove(0);
-        }
-    }
-
+    /*
+       pub fn insert_value(&mut self, value: f64) {
+           self.data.push(value);
+           if self.data.len() > 240 {
+               self.data.remove(0);
+           }
+       }
+    */
     pub fn update_candle(&mut self, hour_key: IntervalKey<HourKey>, price: f64) {
         if self.candles.is_none() {
             self.candles = Some(BTreeMap::new());
