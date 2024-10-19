@@ -9,7 +9,7 @@ service_sdk::macros::use_my_no_sql_entity!();
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct MiniGraphNoSqlEntity {
     pub data: Vec<f64>,
-    pub candles: Option<BTreeMap<u32, [f64; 4]>>, //hour_key, open, high, low, close
+    pub candles: Option<BTreeMap<i64, [f64; 4]>>, //hour_key, open, high, low, close
 }
 
 impl MiniGraphNoSqlEntity {
@@ -28,7 +28,7 @@ impl MiniGraphNoSqlEntity {
     pub fn new(instrument_id: String, timestamp: DateTimeAsMicroseconds, price: f64) -> Self {
         let hour_key: IntervalKey<HourKey> = timestamp.into();
         let mut candles = BTreeMap::new();
-        candles.insert(hour_key.to_i64() as u32, [price, price, price, price]);
+        candles.insert(hour_key.to_i64(), [price, price, price, price]);
 
         Self {
             partition_key: MiniGraphNoSqlEntity::generate_partition_key().to_string(),
@@ -46,13 +46,13 @@ impl MiniGraphNoSqlEntity {
         }
     }
 
-    pub fn update_candle(&mut self, hour_key: u32, price: f64) {
+    pub fn update_candle(&mut self, hour_key: IntervalKey<HourKey>, price: f64) {
         if self.candles.is_none() {
             self.candles = Some(BTreeMap::new());
         }
 
         let candles = self.candles.as_mut().unwrap();
-        if let Some(value) = candles.get_mut(&hour_key) {
+        if let Some(value) = candles.get_mut(hour_key.as_i64_ref()) {
             if price > value[1] {
                 value[1] = price;
             }
@@ -63,7 +63,7 @@ impl MiniGraphNoSqlEntity {
 
             value[3] = price;
         } else {
-            candles.insert(hour_key, [price, price, price, price]);
+            candles.insert(hour_key.to_i64(), [price, price, price, price]);
         }
 
         if candles.len() > 72 {
