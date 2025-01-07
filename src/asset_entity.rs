@@ -10,8 +10,8 @@ pub struct AssetMyNoSqlEntity {
     pub is_enabled: bool,
     #[serde(rename = "DepositMethods")]
     pub deposit_methods: Option<Vec<String>>,
-    #[serde(rename = "IsEnabledWithdrawal")]
-    pub is_enabled_withdrawal: bool,
+    #[serde(rename = "WithdrawMethods")]
+    pub withdraw_methods: Option<Vec<String>>,
     #[serde(rename = "Name")]
     pub name: String,
     #[serde(rename = "IconUrl")]
