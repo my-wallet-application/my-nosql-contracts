@@ -13,6 +13,9 @@ pub struct TradingGroupMyNoSqlEntity {
     #[serde(rename = "TradingConditionsProfileId")]
     pub trading_conditions_profile_id: String,
 
+    #[serde(rename = "WithdrawConditionsProfileId")]
+    pub withdraw_conditions_profile_id: Option<String>,
+
     pub default: bool,
 }
 
