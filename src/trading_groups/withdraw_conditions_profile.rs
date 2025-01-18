@@ -4,7 +4,7 @@ use serde::*;
 #[my_no_sql_entity("withdraw-condition-profiles")]
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct WithdrawConditionsProfileMyNoSqlEntity {
-    pub percent: f64, // 100  means 100%
+    pub commission_percent: f64, // 100  means 100%
 }
 
 impl WithdrawConditionsProfileMyNoSqlEntity {
