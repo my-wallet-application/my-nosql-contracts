@@ -14,11 +14,10 @@ pub struct SendGridSettingsMyNoSqlEntity {
     pub mail_logo_url: Option<String>,
     pub mail_success_picture_url: Option<String>,
     pub mail_fail_picture_url: Option<String>,
-    pub policy_url: String,
-    pub terms_url: String,
-    pub about_url: String,
     pub support_url: String,
     pub home_page_url: String,
+    pub login_url: String,
+    pub company_name: String,
 }
 
 impl SendGridSettingsMyNoSqlEntity {
