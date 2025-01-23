@@ -21,11 +21,6 @@ pub struct SendGridSettingsMyNoSqlEntity {
 }
 
 impl SendGridSettingsMyNoSqlEntity {
-    pub fn generate_partition_key() -> &'static str {
-        "sg"
-    }
-
-    pub fn generate_row_key(src_id: &'static str) -> &'static str {
-        src_id
-    }
+    pub const PARTITION_KEY: &'static str = "send-grid";
+    pub const ROW_KEY: &'static str = "send-grid";
 }
