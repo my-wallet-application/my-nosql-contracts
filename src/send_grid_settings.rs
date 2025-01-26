@@ -20,6 +20,7 @@ pub struct SendGridSettingsMyNoSqlEntity {
     pub login_url: String,
     pub company_name: String,
     pub brand_name: String,
+    pub is_print_only_mode: bool 
 }
 
 impl SendGridSettingsMyNoSqlEntity {
