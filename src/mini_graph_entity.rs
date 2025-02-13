@@ -33,20 +33,12 @@ impl MiniGraphNoSqlEntity {
         Self {
             partition_key: MiniGraphNoSqlEntity::generate_partition_key().to_string(),
             row_key: instrument_id,
-            time_stamp: String::new(),
+            time_stamp: Default::default(),
             //data: vec![price],
             candles: Some(candles),
         }
     }
 
-    /*
-       pub fn insert_value(&mut self, value: f64) {
-           self.data.push(value);
-           if self.data.len() > 240 {
-               self.data.remove(0);
-           }
-       }
-    */
     pub fn update_candle(&mut self, hour_key: IntervalKey<HourKey>, price: f64) {
         if self.candles.is_none() {
             self.candles = Some(BTreeMap::new());
