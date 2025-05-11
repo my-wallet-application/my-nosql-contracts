@@ -1,7 +1,7 @@
 service_sdk::macros::use_my_no_sql_entity!();
 use serde::*;
 
-pub const DEFAULT_GROUP_ID: &'static str = "id";
+pub const DEFAULT_GROUP_ID: &'static str = "default";
 
 #[my_no_sql_entity("mt-trading-groups")]
 #[derive(Serialize, Deserialize, Debug, Clone)]
