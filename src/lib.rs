@@ -19,4 +19,6 @@ pub mod send_grid_settings;
 pub use send_grid_settings::*;
 pub mod send_grid_email_mapping;
 pub use send_grid_email_mapping::*;
+pub mod asset_markup_profile;
+pub use asset_markup_profile::*;
 pub mod mt;
